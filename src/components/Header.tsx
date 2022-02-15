@@ -1,11 +1,15 @@
+import { useState } from 'react';
+
 export const Header = () => {
+  const [show, setShow] = useState(false);
+
   return (
     <nav className='bg-white shadow-xl'>
       <div className='flex justify-between max-w-6xl mx-auto items-center p-4'>
         <div className='text-2xl filter drop-shadow text-[#49a6e9] font-bold'>
           LOGO
         </div>
-        <div>
+        <div className='hidden md:block'>
           <ul className='capitalize flex text-[#324d67] tracking-wider'>
             <li className='mx-2 transition duration-500 hover:text-[#49a6e9]'>
               <a href='/'>home</a>
@@ -24,7 +28,7 @@ export const Header = () => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className='hidden md:block'>
           <ul className='flex text-[#49a6e9]'>
             <li className='mx-2'>
               <a href='https://www.twitter.com'>
@@ -88,7 +92,67 @@ export const Header = () => {
             </li>
           </ul>
         </div>
+        <div className='md:hidden'>
+          <button
+            className='text-2xl transition duration-500 text-[#49a6e9] hover:text-black hover:rotate-90'
+            onClick={() => setShow(!show)}>
+            <svg
+              stroke='currentColor'
+              fill='currentColor'
+              strokeWidth='0'
+              viewBox='0 0 448 512'
+              height='1em'
+              width='1em'
+              xmlns='http://www.w3.org/2000/svg'>
+              <path d='M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z'></path>
+            </svg>
+          </button>
+        </div>
       </div>
+      {show && (
+        <div className='h-[200px] md:hidden'>
+          <ul className='h-full flex flex-col justify-around'>
+            <li>
+              <a
+                href='/'
+                className='block transition-all duration-500 text-[#324d67] hover:text-[#49a6e9] hover:pl-6 hover:bg-[#a5d5f8] py-2 px-4 capitalize tracking-wider'>
+                home
+              </a>
+            </li>
+            <li>
+              {' '}
+              <a
+                href='/'
+                className='block transition-all duration-500 text-[#324d67] hover:text-[#49a6e9] hover:pl-6 hover:bg-[#a5d5f8] py-2 px-4 capitalize tracking-wider'>
+                about
+              </a>
+            </li>
+            <li>
+              {' '}
+              <a
+                href='/'
+                className='block transition-all duration-500 text-[#324d67] hover:text-[#49a6e9] hover:pl-6 hover:bg-[#a5d5f8] py-2 px-4 capitalize tracking-wider'>
+                projects
+              </a>
+            </li>
+            <li>
+              {' '}
+              <a
+                href='/'
+                className='block transition-all duration-500 text-[#324d67] hover:text-[#49a6e9] hover:pl-6 hover:bg-[#a5d5f8] py-2 px-4 capitalize tracking-wider'>
+                contact
+              </a>
+            </li>
+            <li>
+              <a
+                href='/'
+                className='block transition-all duration-500 text-[#324d67] hover:text-[#49a6e9] hover:pl-6 hover:bg-[#a5d5f8] py-2 px-4 capitalize tracking-wider'>
+                profile
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </nav>
   );
 };
